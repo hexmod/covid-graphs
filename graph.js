@@ -1,42 +1,31 @@
 let areas;
 let areaForm;
+let myChart;
 
 async function handlePageLoad(chartArea, form) {
-    let areasResponse = await fetch('./AreaTypes.json');
-    areas = await areasResponse.json();
-
+    areas = await getAreaData();
     areaForm = form;
+
     populateAreaList('utla');
     areaForm.areaTypeInput.addEventListener("change", handleAreaTypeChange);
+    areaForm.areaInput.addEventListener("change", handleAreaChange);
+    createChart();
+}
 
-    var ctx = chartArea.getContext("2d");
-    var myChart = new Chart(ctx, {
-        type: "bar",
+function createChart() {
+    const ctx = chartArea.getContext("2d");
+    myChart = new Chart(ctx, {
+        type: "line",
         data: {
-            labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
-            datasets: [
-                {
-                    label: "# of Votes",
-                    data: [12, 19, 3, 5, 2, 3],
-                    backgroundColor: [
-                        "rgba(255, 99, 132, 0.2)",
-                        "rgba(54, 162, 235, 0.2)",
-                        "rgba(255, 206, 86, 0.2)",
-                        "rgba(75, 192, 192, 0.2)",
-                        "rgba(153, 102, 255, 0.2)",
-                        "rgba(255, 159, 64, 0.2)",
-                    ],
-                    borderColor: [
-                        "rgba(255, 99, 132, 1)",
-                        "rgba(54, 162, 235, 1)",
-                        "rgba(255, 206, 86, 1)",
-                        "rgba(75, 192, 192, 1)",
-                        "rgba(153, 102, 255, 1)",
-                        "rgba(255, 159, 64, 1)",
-                    ],
-                    borderWidth: 1,
-                },
-            ],
+            labels: [],
+            datasets: [{
+                label: '',
+                data: [],
+                backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                borderColor: 'rgba(255, 99, 132, 1)',
+                borderWidth: 1,
+                lineTension: 0
+            }]
         },
         options: {
             scales: {
@@ -48,15 +37,39 @@ async function handlePageLoad(chartArea, form) {
                     },
                 ],
             },
+            title: {
+                display: true,
+                text: 'Covid Data'
+            }
         },
     });
 }
 
-function handleFormSubmit(event) {
-    event.preventDefault(); // Prevent form navigating to a new page
+function updateChart(covidData, mainDataKey, mainDataLabel, chartTitle) {
+    myChart.data.datasets[0].data = [];
+    myChart.data.labels = [];
+
+    covidData.reverse().forEach(function (dataPoint) {
+        myChart.data.labels.push(dataPoint.date)
+        myChart.data.datasets[0].data.push(dataPoint[mainDataKey])
+    })
+    myChart.data.datasets[0].label = mainDataLabel;
+    myChart.options.title.text = chartTitle;
+
+    myChart.update();
 }
 
-function handleAreaTypeChange(event) {
+async function getAreaData() {
+    let areasResponse = await fetch('./AreaTypes.json');
+    return areasResponse.json();
+}
+
+function handleFormSubmit(event) {
+    // Prevent form navigating to a new page
+    event.preventDefault();
+}
+
+function handleAreaTypeChange() {
     populateAreaList(this.value)
 }
 
@@ -66,4 +79,15 @@ function populateAreaList(areaType) {
         options += `<option value="${element}">${element}</option>`;
     });
     areaForm.areaInput.innerHTML = options;
+}
+
+async function handleAreaChange(event) {
+    const covidData = await getNewCasesByPublishDate(areaForm.areaTypeInput.value, this.value)
+    updateChart(covidData, 'newCases', 'New Cases By Specimen Date', `New Cases By Specimen Date in ${this.value}`);
+}
+
+async function getNewCasesByPublishDate(areaType, areaName) {
+    let dataResponse = await fetch(`https://api.coronavirus.data.gov.uk/v1/data?filters=areaType=${areaType};areaName=${areaName}&structure={"date":"date","newCases":"newCasesBySpecimenDate"}&format=json`);
+    parsedData = await dataResponse.json();
+    return parsedData.data;
 }
