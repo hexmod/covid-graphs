@@ -65,6 +65,5 @@ function populateAreaList(areaType) {
     areas[areaType].forEach(element => {
         options += `<option value="${element}">${element}</option>`;
     });
-    console.log(areaForm.areaInput.list);
-    areaForm.areaInput.list.innerHTML = options;
+    areaForm.areaInput.innerHTML = options;
 }
