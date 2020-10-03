@@ -1,12 +1,12 @@
 let areas;
+let areaForm;
 
-async function handlePageLoad(chartArea, areaForm) {
+async function handlePageLoad(chartArea, form) {
     let areasResponse = await fetch('./AreaTypes.json');
     areas = await areasResponse.json();
 
-    console.log("Page loaded :)");
-    console.log(chartArea);
-    console.log(areaForm.areaTypeInput.value);
+    areaForm = form;
+    populateAreaList('utla');
     areaForm.areaTypeInput.addEventListener("change", handleAreaTypeChange);
 
     var ctx = chartArea.getContext("2d");
@@ -57,5 +57,14 @@ function handleFormSubmit(event) {
 }
 
 function handleAreaTypeChange(event) {
-    console.log(this.value);
+    populateAreaList(this.value)
+}
+
+function populateAreaList(areaType) {
+    let options = '';
+    areas[areaType].forEach(element => {
+        options += `<option value="${element}">${element}</option>`;
+    });
+    console.log(areaForm.areaInput.list);
+    areaForm.areaInput.list.innerHTML = options;
 }
