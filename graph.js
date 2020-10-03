@@ -1,4 +1,9 @@
-function handlePageLoad(chartArea, areaForm) {
+let areas;
+
+async function handlePageLoad(chartArea, areaForm) {
+    let areasResponse = await fetch('./AreaTypes.json');
+    areas = await areasResponse.json();
+
     console.log("Page loaded :)");
     console.log(chartArea);
     console.log(areaForm.areaTypeInput.value);
@@ -52,5 +57,5 @@ function handleFormSubmit(event) {
 }
 
 function handleAreaTypeChange(event) {
-    console.log(this.value)
+    console.log(this.value);
 }
