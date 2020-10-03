@@ -19,13 +19,18 @@
     <!-- Graph population logic -->
     <script src="./graph.js"></script>
 
-    <title>Hello, world!</title>
+    <title>UK Covid Graphs</title>
 </head>
 
-<body onload="handlePageLoad(document.getElementById('areasList'), document.getElementById('chartArea'))">
+<body onload="handlePageLoad(document.getElementById('chartArea'), document.getElementById('areaForm'))">
     <h1>Covid Graph</h1>
 
-    <form onsubmit="handleFormSubmit(event, document.getElementById('chartArea'))">
+    <form id="areaForm" onsubmit="handleFormSubmit(event)">
+        <label for="areaType">Choose an area type:</label>
+        <select name="areaType" id="areaTypeInput">
+            <option value="utla">Upper Tier Local Authority</option>
+            <option value="ltla">Lower Tier Local Authority</option>
+        </select>
         <label for="area">Choose an area:</label>
         <input list="areasList" name="area" id="areaInput">
         <datalist id="areasList">
@@ -35,7 +40,6 @@
             <option value="Leeds 4">
             <option value="Leeds 5">
         </datalist>
-        <input type="submit">
     </form>
 
     <canvas id="chartArea" width="400" height="400"></canvas>
