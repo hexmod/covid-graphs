@@ -7,13 +7,13 @@ async function handlePageLoad(chartArea, form) {
     areaForm = form;
 
     populateAreaList('utla');
-    areaForm.areaTypeInput.addEventListener("change", handleAreaTypeChange);
-    areaForm.areaInput.addEventListener("change", handleAreaChange);
-    createChart();
+    areaForm.areaTypeInput.addEventListener('change', handleAreaTypeChange);
+    areaForm.areaInput.addEventListener('change', handleAreaChange);
+    createChart(chartArea);
 }
 
-function createChart() {
-    const ctx = chartArea.getContext("2d");
+function createChart(chartArea) {
+    const ctx = chartArea.getContext('2d');
     myChart = new Chart(ctx, {
         type: "line",
         data: {
@@ -60,7 +60,7 @@ function updateChart(covidData, mainDataKey, mainDataLabel, chartTitle) {
 }
 
 async function getAreaData() {
-    let areasResponse = await fetch('./AreaTypes.json');
+    let areasResponse = await fetch('./areaTypes.json');
     return areasResponse.json();
 }
 
