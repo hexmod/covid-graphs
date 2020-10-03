@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <!-- Custom stylesheet -->
+    <link rel="stylesheet" href="./stylesheet.css">
+
+    <!-- Chart.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"
+        integrity="sha512-s+xg36jbIujB2S2VKfpGmlC3T5V2TF3lY48DX7u2r9XzGzgPsa6wTpOQA7J9iffvdeBN0q9tKzRxVxw1JviZPg=="
+        crossorigin="anonymous"></script>
+    <!-- Graph population logic -->
+    <script src="./graph.js"></script>
+
+    <title>Hello, world!</title>
+</head>
+
+<body onload="handlePageLoad(document.getElementById('areasList'), document.getElementById('chartArea'))">
+    <h1>Covid Graph</h1>
+
+    <form onsubmit="handleFormSubmit(event, document.getElementById('chartArea'))">
+        <label for="area">Choose an area:</label>
+        <input list="areasList" name="area" id="areaInput">
+        <datalist id="areasList">
+            <option value="Leeds">
+            <option value="Leeds 2">
+            <option value="Leeds 3">
+            <option value="Leeds 4">
+            <option value="Leeds 5">
+        </datalist>
+        <input type="submit">
+    </form>
+
+    <canvas id="chartArea" width="400" height="400"></canvas>
+
+</body>
+
+</html>
