@@ -5,6 +5,8 @@
         <!-- Required meta tags -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="A site for viewing graphs of Covid-19 cases in your area.">
+        <meta name="keywords" content="Coronavirus, Covid, Covid-19, graph">
 
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
@@ -38,7 +40,7 @@
                         <div class="col-12">
                             <form class="row pt-3" id="areaForm" onsubmit="handleFormSubmit(event)">
                                 <div class="col-sm-12 col-md-4 col-lg-2 col-xxl-12 text-center text-md-right text-xxl-center mb-md-2 mb-lg-0 mb-xxl-2 pr-1">
-                                    <label for="areaType">Area Type:</label>
+                                    <label for="areaTypeInput">Area Type:</label>
                                 </div>
                                 <div class="col-sm-12 col-md-8 col-lg-4 col-xxl-12 text-center text-md-left text-xxl-center">
                                     <select name="areaType" id="areaTypeInput">
@@ -47,10 +49,10 @@
                                     </select>
                                 </div>
                                 <div class="col-sm-12 col-md-4 col-lg-2 col-xxl-12 text-center text-md-right text-xxl-center mt-xxl-5 mb-xxl-2 pr-1">
-                                    <label for="area">Area:</label>
+                                    <label for="areaInput">Area:</label>
                                 </div>
                                 <div class="col-sm-12 col-md-8 col-lg-4 col-xxl-12 text-center text-md-left text-xxl-center">
-                                    <select id="areaInput" name="area"></select>
+                                    <select name="area" id="areaInput"></select>
                                 </div>
                             </form>
                         </div>
