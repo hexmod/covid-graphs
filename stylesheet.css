@@ -1,4 +1,12 @@
+/* New media queries for extra large screens */
+/* Adding the xxl breakpoint */
 @media (min-width: 3000px) {
+  .col-xxl-12 {
+    -ms-flex: 0 0 100%;
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+
   .col-xxl-9 {
     -ms-flex: 0 0 75%;
     flex: 0 0 75%;
@@ -12,8 +20,10 @@
   }
 }
 
+/* General page layout */
 html,body{
     height:100%;
+    background-color: #ecf0f1;
 }
 
 .flex-fill {
@@ -23,7 +33,32 @@ html,body{
 main {
     min-height: 700px;
 }
-/* 
-#inputCol {
-    min-height: 200px;
-} */
+
+/*  Header */
+#page-header {
+  background-color: #273c75;
+}
+
+#header-text {
+  color: white;
+  margin-top: 2px;
+  margin-bottom: 2px;
+  font-weight: 700;
+}
+
+/* Chart */
+#chart-container {
+  background-color: #ecf0f1;
+}
+
+
+/*  Footer */
+#footer-text {
+  color: #2c3e50;
+  font-size: 12px;
+}
+
+#footer-text a {
+  color: #2c3e50;
+  font-size: 12px;
+}

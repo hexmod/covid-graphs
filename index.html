@@ -24,28 +24,48 @@
 
     <body onload="handlePageLoad(document.getElementById('chartArea'), document.getElementById('areaForm'))">
         <div class="container-fluid d-flex h-100 flex-column">
-            <header class="row pt-2 pb-5">
-                <div class="col text-center">
-                    <h1>Covid Graph</h1>
+            <header class="row pt-2 pb-2" id="page-header">
+                <div class="col-12">
+                    <p id="header-text">Coronavirus UK</p>
                 </div>
             </header>
             <main class="row flex-fill d-flex justify-content-start">
                 <div class="col-xxl-3 col-lg-12">
-                    <form id="areaForm" onsubmit="handleFormSubmit(event)">
-                        <label for="areaType">Choose an area type:</label>
-                        <select name="areaType" id="areaTypeInput">
-                            <option value="utla">Upper Tier Local Authority</option>
-                            <option value="ltla">Lower Tier Local Authority</option>
-                        </select>
-                        <label for="area">Choose an area:</label>
-                        <select id="areaInput" name="area">
-                        </select>
-                    </form>
+                    <div class="row">
+                        <div class="col-12 text-center">
+                            <h1 class="pt-4 pb-3">UK Covid Graphs</h1>
+                        </div>
+                        <div class="col-12">
+                            <form class="row" id="areaForm" onsubmit="handleFormSubmit(event)">
+                                <div class="col-sm-12 col-md-4 col-lg-2 col-xxl-12">
+                                    <label for="areaType">Choose an area type:</label>
+                                </div>
+                                <div class="col-sm-12 col-md-8 col-lg-4 col-xxl-12">
+                                    <select name="areaType" id="areaTypeInput">
+                                        <option value="utla">Upper Tier Local Authority</option>
+                                        <option value="ltla">Lower Tier Local Authority</option>
+                                    </select>
+                                </div>
+                                <div class="col-sm-12 col-md-4 col-lg-2 col-xxl-12">
+                                    <label for="area">Choose an area:</label>
+                                </div>
+                                <div class="col-sm-12 col-md-8 col-lg-4 col-xxl-12">
+                                    <select id="areaInput" name="area"></select>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-xxl-9 col-lg-12">
+                <div class="col-xxl-9 col-lg-12 mt-4" id="chart-container">
                     <canvas id="chartArea"></canvas>
                 </div>
             </main>
+            <footer class="row pt-2 pb-2">
+                <div class="col-12 text-center">
+                    <p id="footer-text" class="mb-0 mt-2">2020 - Made by <a href="https://github.com/MurrayHS" target="blank">MurrayHS</a> and <a href="https://github.com/JackM25" target="blank">JackM25</a>. Data from the <a href="https://coronavirus.data.gov.uk/developers-guide" target="blank">UK Government public API</a>.</p>
+                </div>
+            </footer>
         </div>
     </body>
+
 </html>

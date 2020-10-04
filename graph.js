@@ -39,7 +39,7 @@ function createChart(chartArea) {
             },
             title: {
                 display: true,
-                text: 'Covid Data'
+                text: 'UK Covid Data'
             },
             responsive: true,
             maintainAspectRatio: false
