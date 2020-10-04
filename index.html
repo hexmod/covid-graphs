@@ -1,43 +1,51 @@
 <!doctype html>
 <html lang="en">
 
-<head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-    <!-- Custom stylesheet -->
-    <link rel="stylesheet" href="./stylesheet.css">
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+            integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+        <!-- Custom stylesheet -->
+        <link rel="stylesheet" href="./stylesheet.css">
 
-    <!-- Chart.js -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"
-        integrity="sha512-s+xg36jbIujB2S2VKfpGmlC3T5V2TF3lY48DX7u2r9XzGzgPsa6wTpOQA7J9iffvdeBN0q9tKzRxVxw1JviZPg=="
-        crossorigin="anonymous"></script>
-    <!-- Graph population logic -->
-    <script src="./graph.js"></script>
+        <!-- Chart.js -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"
+            integrity="sha512-s+xg36jbIujB2S2VKfpGmlC3T5V2TF3lY48DX7u2r9XzGzgPsa6wTpOQA7J9iffvdeBN0q9tKzRxVxw1JviZPg=="
+            crossorigin="anonymous"></script>
+        <!-- Graph population logic -->
+        <script src="./graph.js"></script>
 
-    <title>UK Covid Graphs</title>
-</head>
+        <title>UK Covid Graphs</title>
+    </head>
 
-<body onload="handlePageLoad(document.getElementById('chartArea'), document.getElementById('areaForm'))">
-    <h1>Covid Graph</h1>
-
-    <form id="areaForm" onsubmit="handleFormSubmit(event)">
-        <label for="areaType">Choose an area type:</label>
-        <select name="areaType" id="areaTypeInput">
-            <option value="utla">Upper Tier Local Authority</option>
-            <option value="ltla">Lower Tier Local Authority</option>
-        </select>
-        <label for="area">Choose an area:</label>
-        <select id="areaInput" name="area">
-        </select>
-    </form>
-
-    <canvas id="chartArea" width="400" height="400"></canvas>
-
-</body>
-
+    <body onload="handlePageLoad(document.getElementById('chartArea'), document.getElementById('areaForm'))">
+        <div class="container-fluid d-flex h-100 flex-column">
+            <header class="row pt-2 pb-5">
+                <div class="col text-center">
+                    <h1>Covid Graph</h1>
+                </div>
+            </header>
+            <main class="row flex-fill d-flex justify-content-start">
+                <div class="col-xxl-3 col-lg-12">
+                    <form id="areaForm" onsubmit="handleFormSubmit(event)">
+                        <label for="areaType">Choose an area type:</label>
+                        <select name="areaType" id="areaTypeInput">
+                            <option value="utla">Upper Tier Local Authority</option>
+                            <option value="ltla">Lower Tier Local Authority</option>
+                        </select>
+                        <label for="area">Choose an area:</label>
+                        <select id="areaInput" name="area">
+                        </select>
+                    </form>
+                </div>
+                <div class="col-xxl-9 col-lg-12">
+                    <canvas id="chartArea"></canvas>
+                </div>
+            </main>
+        </div>
+    </body>
 </html>
