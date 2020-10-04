@@ -21,8 +21,8 @@ function createChart(chartArea) {
             datasets: [{
                 label: '',
                 data: [],
-                backgroundColor: 'rgba(255, 99, 132, 0.2)',
-                borderColor: 'rgba(255, 99, 132, 1)',
+                backgroundColor: 'rgba(52, 152, 219, 0.2)',
+                borderColor: 'rgba(52, 152, 219, 1)',
                 borderWidth: 1,
                 lineTension: 0
             }]
@@ -39,8 +39,10 @@ function createChart(chartArea) {
             },
             title: {
                 display: true,
-                text: 'Covid Data'
-            }
+                text: 'UK Covid Data'
+            },
+            responsive: true,
+            maintainAspectRatio: false
         },
     });
 }
