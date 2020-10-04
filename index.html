@@ -30,33 +30,33 @@
                 </div>
             </header>
             <main class="row flex-fill d-flex justify-content-start">
-                <div class="col-xxl-3 col-lg-12">
+                <div class="col-lg-12 col-xxl-2">
                     <div class="row">
                         <div class="col-12 text-center">
                             <h1 class="pt-4 pb-3">UK Covid Graphs</h1>
                         </div>
                         <div class="col-12">
-                            <form class="row" id="areaForm" onsubmit="handleFormSubmit(event)">
-                                <div class="col-sm-12 col-md-4 col-lg-2 col-xxl-12">
-                                    <label for="areaType">Choose an area type:</label>
+                            <form class="row pt-3" id="areaForm" onsubmit="handleFormSubmit(event)">
+                                <div class="col-sm-12 col-md-4 col-lg-2 col-xxl-12 text-center text-md-right text-xxl-center mb-md-2 mb-lg-0 mb-xxl-2 pr-1">
+                                    <label for="areaType">Area Type:</label>
                                 </div>
-                                <div class="col-sm-12 col-md-8 col-lg-4 col-xxl-12">
+                                <div class="col-sm-12 col-md-8 col-lg-4 col-xxl-12 text-center text-md-left text-xxl-center">
                                     <select name="areaType" id="areaTypeInput">
                                         <option value="utla">Upper Tier Local Authority</option>
                                         <option value="ltla">Lower Tier Local Authority</option>
                                     </select>
                                 </div>
-                                <div class="col-sm-12 col-md-4 col-lg-2 col-xxl-12">
-                                    <label for="area">Choose an area:</label>
+                                <div class="col-sm-12 col-md-4 col-lg-2 col-xxl-12 text-center text-md-right text-xxl-center mt-xxl-5 mb-xxl-2 pr-1">
+                                    <label for="area">Area:</label>
                                 </div>
-                                <div class="col-sm-12 col-md-8 col-lg-4 col-xxl-12">
+                                <div class="col-sm-12 col-md-8 col-lg-4 col-xxl-12 text-center text-md-left text-xxl-center">
                                     <select id="areaInput" name="area"></select>
                                 </div>
                             </form>
                         </div>
                     </div>
                 </div>
-                <div class="col-xxl-9 col-lg-12 mt-4" id="chart-container">
+                <div class="col-lg-12 col-xxl-10 mt-4" id="chart-container">
                     <canvas id="chartArea"></canvas>
                 </div>
             </main>
