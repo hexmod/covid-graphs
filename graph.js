@@ -25,6 +25,14 @@ function createChart(chartArea) {
                 borderColor: 'rgba(52, 152, 219, 1)',
                 borderWidth: 1,
                 lineTension: 0
+            },
+            {
+                label: '',
+                data: [],
+                backgroundColor: 'rgba(149, 15, 15, 0.2)',
+                borderColor: 'rgba(149, 15, 15, 1)',
+                borderWidth: 1,
+                lineTension: 0
             }]
         },
         options: {
@@ -48,17 +56,34 @@ function createChart(chartArea) {
 }
 
 function updateChart(covidData, mainDataKey, mainDataLabel, chartTitle) {
+    let weeksData = [];
     myChart.data.datasets[0].data = [];
+    myChart.data.datasets[1].data = [];
     myChart.data.labels = [];
 
-    covidData.reverse().forEach(function (dataPoint) {
-        myChart.data.labels.push(dataPoint.date)
-        myChart.data.datasets[0].data.push(dataPoint[mainDataKey])
+    covidData.reverse().forEach(function (dataPoint, index) {
+        if (index > 6) {
+            weeksData.shift();
+        }
+        weeksData.push(dataPoint[mainDataKey]);
+        myChart.data.labels.push(dataPoint.date);
+        myChart.data.datasets[0].data.push(dataPoint[mainDataKey]);
+        myChart.data.datasets[1].data.push(calculateWeekAverage(weeksData));
     })
+
     myChart.data.datasets[0].label = mainDataLabel;
+    myChart.data.datasets[1].label = '7 Day Average';
     myChart.options.title.text = chartTitle;
 
     myChart.update();
+}
+
+function calculateWeekAverage(weeksData) {
+    let total = 0;
+    weeksData.forEach(element => {
+        total += element;
+    });
+    return Math.round(total / weeksData.length);
 }
 
 async function getAreaData() {
