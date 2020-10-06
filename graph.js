@@ -15,24 +15,30 @@ async function handlePageLoad(chartArea, form) {
 function createChart(chartArea) {
     const ctx = chartArea.getContext('2d');
     myChart = new Chart(ctx, {
-        type: "line",
+        type: 'line',
         data: {
             labels: [],
             datasets: [{
                 label: '',
                 data: [],
-                backgroundColor: 'rgba(52, 152, 219, 0.2)',
-                borderColor: 'rgba(52, 152, 219, 1)',
-                borderWidth: 1,
-                lineTension: 0
+                backgroundColor: 'rgba(52, 152, 219, 0.3)',
+                borderWidth: 0,
+                type: 'bar',
+                order: 1
             },
             {
                 label: '',
                 data: [],
-                backgroundColor: 'rgba(149, 15, 15, 0.2)',
-                borderColor: 'rgba(149, 15, 15, 1)',
-                borderWidth: 1,
-                lineTension: 0
+                pointBackgroundColor: 'rgba(52, 152, 219, 0.8)',
+                pointBorderWidth: 0,
+                pointRadius: 2,
+                borderColor: 'rgba(52, 152, 219, 0.8)',
+                borderWidth: 3,
+                fill: false,
+                lineTension: 0,
+                spanGaps: true,
+                type: 'line',
+                order: 2
             }]
         },
         options: {
@@ -72,7 +78,7 @@ function updateChart(covidData, mainDataKey, mainDataLabel, chartTitle) {
     })
 
     myChart.data.datasets[0].label = mainDataLabel;
-    myChart.data.datasets[1].label = '7 Day Average';
+    myChart.data.datasets[1].label = '7-Day Average';
     myChart.options.title.text = chartTitle;
 
     myChart.update();
