@@ -15,23 +15,24 @@ async function handlePageLoad(chartArea, form) {
 function createChart(chartArea) {
     const ctx = chartArea.getContext('2d');
     myChart = new Chart(ctx, {
-        type: 'bar',
+        type: 'line',
         data: {
             labels: [],
             datasets: [{
                 label: '',
                 data: [],
-                backgroundColor: 'rgba(52, 152, 219, 0.3)',
+                backgroundColor: 'rgba(52, 152, 219, 0.4)',
                 borderWidth: 0,
+                type: 'bar',
                 order: 1
             },
             {
                 label: '',
                 data: [],
-                pointBackgroundColor: 'rgba(52, 152, 219, 0.8)',
+                pointBackgroundColor: 'rgba(44, 62, 80, 1.0)',
                 pointBorderWidth: 0,
                 pointRadius: 2,
-                borderColor: 'rgba(52, 152, 219, 0.8)',
+                borderColor: 'rgba(44, 62, 80, 1.0)',
                 borderWidth: 3,
                 fill: false,
                 lineTension: 0,
