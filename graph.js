@@ -72,7 +72,7 @@ function updateChart(covidData, mainDataKey, mainDataLabel, chartTitle) {
     })
 
     myChart.data.datasets[0].label = mainDataLabel;
-    myChart.data.datasets[1].label = '7 Day Average';
+    myChart.data.datasets[1].label = '7-Day Average';
     myChart.options.title.text = chartTitle;
 
     myChart.update();
