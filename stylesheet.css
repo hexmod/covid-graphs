@@ -74,24 +74,30 @@ html,body{
     background-color: #ecf0f1;
 }
 
-.flex-fill {
-    flex:1;
-}
-
 main {
-    min-height: 700px;
+  min-height: 700px;
 }
 
-/*  Header */
-#page-header {
+#header-container {
+  flex: 0 0 auto;
   background-color: #273c75;
 }
 
+#main-container {
+  flex: 1 1 auto;
+}
+
+#footer-container {
+  flex: 0 0 auto;
+}
+
+/*  Header */
 #header-text {
   color: white;
   margin-top: 2px;
   margin-bottom: 2px;
   font-weight: 700;
+  font-size: 16px;
 }
 
 /* Forms */
