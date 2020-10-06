@@ -21,7 +21,7 @@ function createChart(chartArea) {
             datasets: [{
                 label: '',
                 data: [],
-                backgroundColor: 'rgba(52, 152, 219, 0.4)',
+                backgroundColor: 'rgba(52, 152, 219, 0.5)',
                 borderWidth: 0,
                 type: 'bar',
                 order: 1
@@ -29,10 +29,10 @@ function createChart(chartArea) {
             {
                 label: '',
                 data: [],
-                pointBackgroundColor: 'rgba(44, 62, 80, 1.0)',
+                pointBackgroundColor: 'rgba(232, 65, 24, 1.0)',
                 pointBorderWidth: 0,
                 pointRadius: 2,
-                borderColor: 'rgba(44, 62, 80, 1.0)',
+                borderColor: 'rgba(232, 65, 24, 1.0)',
                 borderWidth: 3,
                 fill: false,
                 lineTension: 0,
